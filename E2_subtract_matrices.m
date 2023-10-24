@@ -22,7 +22,7 @@ function E2_subtract_matrices (sub_dir, conn_matrix_pcb, conn_matrix_exp, exp_fi
             matrix_C(locations, :) = NaN; %replace with NaN if zeros > 0.5
         end 
 
-        new_name =  (extractAfter(B, 'R2Rconn170_'));
+        new_name =  (extractAfter(B, 'R2Rconn150_'));
         new_name =  [(extractBefore(new_name, '.mat'))];
         new_name = [names new_name]; %change name depending on condition
         eval(['save ' sub_dir filesep new_name '.mat matrix_C ROI']);
