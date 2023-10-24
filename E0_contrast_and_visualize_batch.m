@@ -20,10 +20,10 @@ exp_file_names2 = '10Hz_bold';
 %names that will be given to the perc0 file. Use the name of experimental
 %condition 
 name = 'average_10Hz_bold_perc0';
-contrast_name = 'R2Rconn170_hybrid_10Hz_vs_baseline_'; 
+contrast_name = 'R2Rconn150_10Hz_vs_baseline_'; 
 
 %change here to use files with or without GSR 
-prefix = 'R2Rconn170_hybrid_Fh01l08_Rhclqg_s3'; 
+prefix = 'R2Rconn150_Fh01l08_Rhclqg_s3'; 
 prefix2 = '*Fh01l08_Rhclqg_s3*'; 
 suffix = '*Fh01l08_Rhclqg_s3.mat'; 
 
@@ -54,7 +54,7 @@ end
 
 %% Average matrices 
 if ismember(3,analysis_switch)
-   all_matrices = dir(fullfile(src_dir, '**', [contrast_name, prefix2, 'mat'])); %change back to constrast name. src_dir. 'mat'. search for the matrirces created in previous step
+   all_matrices = dir(fullfile(src_dir, '**', [contrast_name, prefix2, 'mat'])); %search for the matrirces created in previous step
    E3_average_matrices(all_matrices, src_dir)
 end
 
