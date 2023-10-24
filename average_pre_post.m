@@ -11,8 +11,8 @@ SJs = {all_files.name}; % creating cell array with subjects' IDs
 % subtract matrices
 for subject = 1:numel(SJs)
     sub_dir = [all_files(subject).folder filesep all_files(subject).name];
-    pre_matrix =  dir(fullfile(sub_dir, '**', ['R2Rconn170_hybrid_Fh01l08_Rhclq_s3', '*pre*bold.mat'])); 
-    post_matrix =  dir(fullfile(sub_dir, '**', ['R2Rconn170_hybrid_Fh01l08_Rhclq_s3', '*post*bold.mat']));
+    pre_matrix =  dir(fullfile(sub_dir, '**', ['R2Rconn150_Fh01l08_Rhclqg_s3', '*pre*bold.mat'])); 
+    post_matrix =  dir(fullfile(sub_dir, '**', ['R2Rconn150_Fh01l08_Rhclqg_s3', '*post*bold.mat']));
     A = [pre_matrix.folder filesep pre_matrix.name];
     matrix_A = load(A);
     B = [post_matrix.folder filesep post_matrix.name];
@@ -20,7 +20,7 @@ for subject = 1:numel(SJs)
     CorrMat =  ((matrix_B.CorrMat + matrix_A.CorrMat)/2);
     ROI = matrix_A.ROI;
     Percent0 = matrix_A.percent0;
-    new_name = (extractAfter(B, '_atlas_finale_3\'));
+    new_name = (extractAfter(B, 'hybrid_atlas\'));
     new_name = strrep(new_name, 'task-post' , 'task-baseline');
     eval(['save ' pre_matrix.folder filesep new_name ' CorrMat ROI Percent0']);
 end 
