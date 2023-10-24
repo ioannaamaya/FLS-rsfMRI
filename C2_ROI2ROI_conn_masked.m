@@ -90,9 +90,12 @@ for file=1:length(functional_files)
              temp=repmat(AvgMat(i,:),length(ROI.ID),1);
              CorrMat(:,i)=x_calcPairCorr(AvgMat,temp);
          end
+
+         % Round (to avoid output of complex numbers) and apply Fisher z-transformation to all ROI-to-ROI pairs.
+         CorrMat = atanh(round(CorrMat, 7));
             
-         eval(['save ' outputdir filesep 'R2Rconn170_hybrid_' tempfile(1:end-4) '.mat CorrMat ROI file atlas percent0']) %save all Information as .mat
-         writematrix(CorrMat, [outputdir filesep  'R2Rconn170_hybrid_' tempfile(1:end-4) '.csv']) %save Correlation Matrix as .csv 
+         eval(['save ' outputdir filesep 'R2Rconn150_' tempfile(1:end-4) '.mat CorrMat ROI file atlas percent0']) %save all Information as .mat
+         writematrix(CorrMat, [outputdir filesep  'R2Rconn150_' tempfile(1:end-4) '.csv']) %save Correlation Matrix as .csv 
             
          clear CorrMat i tem* AvgMat AllVolume n* fwdata
     end
